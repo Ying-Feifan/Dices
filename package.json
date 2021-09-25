@@ -1,6 +1,10 @@
 {
   "name": "dices",
-  "version": "0.0.0",
+  "description": "Simulation of the sum of two dices plotted on chart. Using Chart.js and Agular",
+  "version": "1.0.0",
+  "engines": {
+    "node": "14.x"
+  },
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
