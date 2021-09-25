@@ -1,6 +1,6 @@
 # Dices
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.2.7.
+Simulation the sum of two dices plotted on chart. Using Chart.js and Agular
 
 ## Development server
 
