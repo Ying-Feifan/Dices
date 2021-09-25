@@ -3,7 +3,8 @@
   "description": "Simulation of the sum of two dices plotted on chart. Using Chart.js and Agular",
   "version": "1.0.0",
   "engines": {
-    "node": "14.x"
+    "node": "15.13.0",
+    "npm": "7.10.0"
   },
   "scripts": {
     "ng": "ng",
@@ -23,7 +24,7 @@
     "@angular/platform-browser-dynamic": "~12.2.0",
     "@angular/router": "~12.2.0",
     "bootstrap": "^5.1.1",
-    "ng2-charts": "^2.4.2",
+    "ng2-charts": "^2.4.3",
     "rxjs": "~6.6.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.11.4"
