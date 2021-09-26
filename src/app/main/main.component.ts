@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ChartDataSets, ChartOptions, ChartType, scaleService } from 'chart.js';
+import { ChartDataSets, ChartOptions, ChartType } from 'chart.js';
 import { Color, Label } from 'ng2-charts';
 
 @Component({
@@ -8,20 +8,27 @@ import { Color, Label } from 'ng2-charts';
   styleUrls: ['./main.component.css']
 })
 export class MainComponent implements OnInit {
-
   public lineChartData: ChartDataSets[] = [
-    { data: [], label: 'Soma dos dados' },
+    { data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], label: 'Soma dos dados' },
   ];
-  public lineChartLabels: Label[] = [];
+  public lineChartLabels: Label[] = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13'];
   public lineChartOptions: ChartOptions = {
     responsive: true,
     scales: {
-      yAxes: [{
+      xAxes: [{
         display: true,
         ticks: {
           stepSize: 1,
           max: 12,
-          min:0
+          min: 0
+        }
+      }],
+      yAxes: [{
+        display: true,
+        ticks: {
+          stepSize: 1,
+          suggestedMax: 50,
+          min: 0
         }
       }]
     }
@@ -38,6 +45,8 @@ export class MainComponent implements OnInit {
 
   public diceValue1: any;
   public diceValue2: any;
+  public data: Array<number> = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+  public repetitions: any = 50;
   constructor() { }
 
   ngOnInit(): void {
@@ -52,15 +61,27 @@ export class MainComponent implements OnInit {
   }
 
   submit() {
-    console.log(this.diceValue1, this.diceValue2)
-    this.lineChartData[0].data?.push(this.diceValue1 + this.diceValue2)
-    this.lineChartLabels.push(this.lineChartLabels.length.toString())
+    const totalDiceValue = this.diceValue1 + this.diceValue2;
+    this.data[totalDiceValue - 1] += 1;
+    this.lineChartData[0].data = this.data;
+    this.lineChartData[0].data = this.lineChartData[0].data.slice();
     this.setDicesValue();
   }
 
+  automatic() {
+    setTimeout(() => {
+      this.submit();
+      let i = Math.max(...this.data);
+      if (i < this.repetitions) {
+        this.automatic();
+      }
+    }, 10)
+
+  }
+
   clean() {
-    this.lineChartData[0].data = [];
-    this.lineChartLabels = []
+    this.data = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+    this.lineChartData[0].data = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
   }
 
   getRandomInt(max: number) {

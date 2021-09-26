@@ -1,9 +1,31 @@
-<h3>Dado1</h3>>
-<input type="number" [(ngModel)]="diceValue1" max=6>
-<h3>Dado2</h3>>
-<input type="number" [(ngModel)]="diceValue2" max=6>
-<button (click)="submit()">Adicionar</button>
-<button (click)="clean()">Limpar</button>
+<div class="row">
+  <div class="col-4">
+    <h3>Dado1</h3>
+    <input type="number" [(ngModel)]="diceValue1" max=6>
+  </div>
+  <div class="col-4">
+    <h3>Dado2</h3>
+    <input type="number" [(ngModel)]="diceValue2" max=6>
+  </div>
+  <div class="col-4">
+  </div>
+</div>
+
+<br>
+<div class="row">
+  <div class="col">
+    <h5>Valor único: </h5>
+    <button class="mx-5" (click)="submit()">Adicionar</button>
+    <button (click)="clean()">Limpar</button>
+  </div>
+  <div class="col">
+    <h5>Repetições: </h5>
+    <input type="number" [(ngModel)]="repetitions" min=0>
+    <button (click)="automatic()">Automatico</button>
+  </div>
+</div>
+
+<br><br>
 
 <div class="chart" style="display: block;">
     <canvas baseChart width="400" height="400"
